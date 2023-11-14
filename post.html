@@ -17,18 +17,22 @@
     </header>
 
     <form class="postform">
-    <div class="flexcolumn"> 
-    <h1>
-        Share Your Thoughts
-    </h1>
-    <label for="Form">Notes</label>
-    <br>
-    <textarea name="freeform" id="freeform" cols="50" rows="30"></textarea>
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-    <br>
-</div>
-</form>
+        <div class="flexcolumn"> 
+            <h1>
+                Share Your Thoughts
+            </h1>
+            <label for="Form">New Note:</label>
+            <br>
+            <textarea name="freeform" id="noteinput" cols="50" rows="30"></textarea>
+            <br>
+            <br>
+            <input type="button" id="notebutton" value="Submit">
+            <br>
+        </div>
+    </form>
+    <div id="notes">
+
+    </div>
+    <script src="post.js"></script>
 </body>
 </html>
