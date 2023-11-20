@@ -8,4 +8,10 @@ addButton.addEventListener("click", function (e) {
     newListItem.textContent = newNoteInput.value;
     notesList.appendChild(newListItem);
     newNoteInput.value = "";
+    let newDeleteButton = document.createElement("button");
+    newListItem.appendChild(newDeleteButton);
+    newDeleteButton.textContent = "delete";
+    newDeleteButton.addEventListener("click", function (e){
+        newListItem.remove();
+    })
 });
