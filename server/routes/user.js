@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.get('/',(req, res) => {
     }
 })
 
-module.exports = router;*/
+module.exports = router;
 
 const express = require("express")
 const User = require("../models/user")
@@ -41,6 +41,7 @@ router
 // register route
 .post('/register', async (req, res) => {
   try {
+    console.log(req.body)
     const user = await User.register(req.body)
     res.send({...user, Password: undefined})
   } catch(err) {
