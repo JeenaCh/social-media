@@ -11,12 +11,6 @@ router.get('/',(req, res) => {
     }
 })
 
-module.exports = router;
-
-const express = require("express")
-const User = require("../models/user")
-const router = express.Router()
-
 router
 
 .get('/getAllUsers', async (req, res) => {

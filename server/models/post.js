@@ -21,12 +21,13 @@ const con = require("./db_connect");
 
 async function createTable() {
     let sql = ` 
-    Create table posts (
-        PostID INT NOT NULL AUTO_INCREMENT,
-        Share VARCHAR (255) NOT NULL,
-        UserID INT,
-        CONSTRAINT PostPK PRIMARY KEY(POSTID),
-        FOREIGN KEY (UserID) REFERENCES users(UserID)
+    Create table if not exists posts (
+        post_id INT NOT NULL AUTO_INCREMENT,
+        content VARCHAR(255),
+        share VARCHAR (255),
+        user_id INT,
+        CONSTRAINT PostPK PRIMARY KEY(post_id),
+        FOREIGN KEY PostFK(user_id) REFERENCES users(UserID)
         );
     `
     await con.query(sql)
@@ -41,18 +42,30 @@ createTable()
     
 
 //Create New POST
-async function ceatePost(post) {
+async function createPost(post) {
     let sql = `
-    INSERT INTO posts(content, post_id)
-    VALUES("${post.content}", "${post.user_id}"
+    INSERT INTO posts(content, user_id)
+    VALUES("${post.content}", ${post.user_id})
     `
     await con.query(sql)
+    return await getAllPosts()
 }
+// Update a post
+async function updatePost(post) {
+    let sql = `
+      UPDATE Post
+      SET post_content = "${post.post_content}"
+      WHERE post_id = ${post.post_id}
+    `;
+  
+    await con.query(sql);
+  }
+  
  //Delete post
  async function deletePost(post) {
     let sql = `DELETE FROM posts
 WHERE post_id = ${post.post_id}
 `
-await con.queryy(sql)
+await con.query(sql)
 }
-module.exports = { getPosts ,createPost, deletePost};
+module.exports = { getAllPosts ,createPost, deletePost};

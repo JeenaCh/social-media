@@ -76,8 +76,8 @@ async function register(user) {
   if(userResult.length > 0) throw Error("Username already in use!!")
 
   let sql = `
-    INSERT INTO users(UserName, Password, Email)
-    VALUES("${user.username}", "${user.password}", "${user.email}")
+    INSERT INTO users(UserName, Password)
+    VALUES("${user.username}", "${user.password}")
   `
 
   await con.query(sql)
